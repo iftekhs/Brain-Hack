@@ -1,16 +1,67 @@
-import React, { useState } from 'react';
-import { FaGoogle } from 'react-icons/fa';
+import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
+import React, { useContext, useState } from 'react';
+import { FaGithub, FaGoogle } from 'react-icons/fa';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../contexts/AuthProvider';
 import './Login.css';
 
 const Login = () => {
+  const { signIn, providerLogin, setLoading } = useContext(AuthContext);
   const [btnLoading, setBtnLoading] = useState(false);
+  const [error, setError] = useState(null);
+
+  //   Navigate & Location
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const from = location.state?.from?.pathname || '/';
+
+  //   Providers
+  const googleProvider = new GoogleAuthProvider();
+  const githubProvider = new GithubAuthProvider();
 
   const handleSubmit = (event) => {
     event.preventDefault();
     setBtnLoading(true);
-    setTimeout(() => {
-      setBtnLoading(false);
-    }, 5000);
+
+    setError(null);
+    const form = event.target;
+    const email = form.email.value;
+    const password = form.password.value;
+
+    signIn(email, password)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+        form.reset();
+        if (user.emailVerified) {
+          navigate(from, { replace: true });
+        }
+      })
+      .catch((error) => {
+        console.error(error);
+        setError(error.message);
+      })
+      .finally(() => {
+        setLoading(false);
+        setBtnLoading(false);
+      });
+  };
+
+  const handleGoogleSignIn = () => {
+    providerLogin(googleProvider)
+      .then(() => {
+        navigate(from, { replace: true });
+      })
+      .catch((error) => console.log(error));
+  };
+
+  const handleGithubSignIn = () => {
+    providerLogin(githubProvider)
+      .then(() => {
+        navigate(from, { replace: true });
+      })
+      .catch((error) => console.log(error));
   };
 
   return (
@@ -51,7 +102,6 @@ const Login = () => {
                 {btnLoading ? (
                   <div className="flex items-center justify-center">
                     <svg
-                      aria-hidden="true"
                       class="mr-2 w-6 h-6 text-cpurple fill-white animate-spin"
                       viewBox="0 0 100 101"
                       fill="none"
@@ -72,9 +122,16 @@ const Login = () => {
               </button>
 
               <button
+                onClick={handleGoogleSignIn}
+                type="button"
+                className="w-full mb-2 border rounded-lg flex items-center justify-center py-3 gap-3 cursor-pointer hover:bg-slate-50 transition-all">
+                <FaGoogle></FaGoogle> Sign In
+              </button>
+              <button
+                onClick={handleGithubSignIn}
                 type="button"
                 className="w-full border rounded-lg flex items-center justify-center py-3 gap-3 cursor-pointer hover:bg-slate-50 transition-all">
-                <FaGoogle></FaGoogle> Sign In
+                <FaGithub></FaGithub> Sign In
               </button>
             </form>
           </div>

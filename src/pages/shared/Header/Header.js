@@ -1,13 +1,18 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
-import { HiBars3 } from 'react-icons/hi2';
+import { GoThreeBars } from 'react-icons/go';
 import './Header.css';
+import { AuthContext } from '../../../contexts/AuthProvider';
 
 const Header = () => {
+  const { user, logOut } = useContext(AuthContext);
   const [burgerMenuOpen, setBurgerMenuOpen] = useState(false);
-
   const toggleBurgerMenu = () => {
     setBurgerMenuOpen(!burgerMenuOpen);
+  };
+
+  const signOut = () => {
+    logOut();
   };
 
   return (
@@ -52,17 +57,34 @@ const Header = () => {
             <div className="w-11 h-6 bg-gray-200 rounded-full peer peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
           </label>
 
-          <Link to="/login" className="btn bg-cpurple text-white hover:bg-violet-600">
-            Sign In
-          </Link>
-          <Link to="/register" className="btn bg-cpurple text-white hover:bg-violet-600">
-            Sign Up
-          </Link>
+          {user && user.uid ? (
+            <>
+              <img
+                title={user.displayName}
+                class="w-10 h-10 rounded-full"
+                src={user.photoURL}
+                alt="user"
+                height="60"
+              />
+              <button onClick={signOut} className="btn bg-cpurple text-white hover:bg-violet-600">
+                Sign Out
+              </button>
+            </>
+          ) : (
+            <>
+              <Link to="/login" className="btn bg-cpurple text-white hover:bg-violet-600">
+                Sign In
+              </Link>
+              <Link to="/register" className="btn bg-cpurple text-white hover:bg-violet-600">
+                Sign Up
+              </Link>
+            </>
+          )}
         </nav>
         <button
           onClick={toggleBurgerMenu}
           className={`btn ${burgerMenuOpen && 'bg-cgray'} block md:hidden btn-burger text-3xl`}>
-          <HiBars3></HiBars3>
+          <GoThreeBars></GoThreeBars>
         </button>
       </div>
       <div className={`container ${!burgerMenuOpen && 'hidden'} mx-auto py-3  mt-2`}>

@@ -9,7 +9,7 @@ import {
   signOut,
   updateProfile,
 } from 'firebase/auth';
-import app from '../../firebase/firebase.config';
+import app from '../firebase/firebase.config';
 
 export const AuthContext = createContext();
 const auth = getAuth(app);
@@ -49,9 +49,9 @@ const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      if (currentUser === null || currentUser.emailVerified) {
-        setUser(currentUser);
-      }
+      setUser(currentUser);
+      // if (currentUser === null || currentUser.emailVerified) {
+      // }
       setLoading(false);
     });
 
