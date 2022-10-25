@@ -109,7 +109,7 @@ const Register = () => {
                 <input className="input" id="password" type="password" name="password" required />
               </div>
 
-              <p className="mb-2 text-rose-500">{error}</p>
+              <p className="mb-3 text-rose-500">{error}</p>
 
               <button
                 disabled={btnLoading}
