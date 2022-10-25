@@ -6,14 +6,16 @@ import './Home.css';
 const Home = () => {
   return (
     <>
-      <section className="hero">
+      <section className="hero px-2">
         <div className="hero-content flex flex-col items-center text-center text-white">
           <h2 className="mb-3 text-1xl font-semibold">KNOWLEDGE IS POWER</h2>
           <h1 className="mb-6 text-4xl font-bold">BrainHack the ultimate learning platform</h1>
           <p className="mb-6 text-1xl text-slate-200">
-            We have over 1,200 + courses on different programming languages created by our <br />{' '}
-            expert programmers. Our courses are simplified and easy to understand. <br /> So why
-            wait? start your programming journey right now!
+            We have over 1,200 + courses on different programming languages created by our
+            <br className="hidden md:block" />
+            expert programmers. Our courses are simplified and easy to understand.
+            <br className="hidden md:block" /> So why wait? start your programming journey right
+            now!
           </p>
           <button className="px-5 py-3 rounded bg-cpurple text-white transition-all hover:bg-violet-600">
             Get Started Now
@@ -33,8 +35,8 @@ const Home = () => {
 
       <section className="px-2">
         <div className="container mx-auto">
-          <div className="top-courses flex flex-wrap items-center justify-center gap-4">
-            <div className="rounded top-course">
+          <div className="features flex flex-wrap items-center justify-center gap-4">
+            <div className="rounded feature">
               <div className="text-2xl bg-violet-500 p-2 rounded text-white">
                 <FaRegChartBar></FaRegChartBar>
               </div>
@@ -45,7 +47,7 @@ const Home = () => {
                 </p>
               </div>
             </div>
-            <div className="rounded top-course">
+            <div className="rounded feature">
               <div className="text-2xl bg-violet-500 p-2 rounded text-white">
                 <BsBullseye></BsBullseye>
               </div>
@@ -56,7 +58,7 @@ const Home = () => {
                 </p>
               </div>
             </div>
-            <div className="rounded top-course">
+            <div className="rounded feature">
               <div className="text-2xl bg-violet-500 p-2 rounded text-white">
                 <AiOutlineSearch></AiOutlineSearch>
               </div>

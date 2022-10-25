@@ -1,0 +1,42 @@
+.auth-container {
+  min-height: 90vh;
+}
+
+.auth-form-container {
+  width: 100%;
+  max-width: 1000px;
+  height: 500px;
+  background-color: #fff;
+  box-shadow: 0px 10px 30px -3px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.auth-form-container .left {
+  background-color: #8c52ff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+}
+
+.auth-form-container .right {
+  padding: 40px;
+}
+
+.auth-form {
+  width: 100%;
+}
+
+.input {
+  width: 100%;
+  border: 1px solid #e2e8f0;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: #f7f7ff;
+  color: #94a3b8;
+}
+
+.input:focus {
+  background-color: #fff;
+  color: #070600;
+}

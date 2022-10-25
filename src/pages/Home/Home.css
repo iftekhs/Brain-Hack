@@ -26,12 +26,12 @@
   bottom: 0;
 }
 
-.top-courses {
+.features {
   position: relative;
   margin-top: -200px;
 }
 
-.top-course {
+.feature {
   display: flex;
   align-items: center;
   gap: 20px;

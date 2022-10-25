@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
-import { FaBars } from 'react-icons/fa';
+import { HiBars3 } from 'react-icons/hi2';
 import './Header.css';
 
 const Header = () => {
@@ -61,8 +61,8 @@ const Header = () => {
         </nav>
         <button
           onClick={toggleBurgerMenu}
-          className={`btn ${burgerMenuOpen && 'bg-cgray'} block md:hidden btn-burger text-2xl`}>
-          <FaBars></FaBars>
+          className={`btn ${burgerMenuOpen && 'bg-cgray'} block md:hidden btn-burger text-3xl`}>
+          <HiBars3></HiBars3>
         </button>
       </div>
       <div className={`container ${!burgerMenuOpen && 'hidden'} mx-auto py-3  mt-2`}>
