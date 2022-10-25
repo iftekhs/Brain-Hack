@@ -1,5 +1,5 @@
 import { createBrowserRouter } from 'react-router-dom';
-import Main from '../../layouts/Main';
+import Main from '../layouts/Main';
 
 export const routes = createBrowserRouter([
   {
