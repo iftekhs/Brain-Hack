@@ -1,7 +1,7 @@
 import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
 import React, { useContext, useState } from 'react';
 import { FaGithub, FaGoogle } from 'react-icons/fa';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider';
 import './Login.css';
 
@@ -135,6 +135,12 @@ const Login = () => {
                 className="w-full border rounded-lg flex items-center justify-center py-3 gap-3 cursor-pointer hover:bg-slate-50 transition-all">
                 <FaGithub></FaGithub> Sign In
               </button>
+              <p className="mt-8 text-slate-400 text-center">
+                Dont have an account yet?
+                <Link to="/register" className="text-cpurple font-semibold">
+                  Sign Up
+                </Link>
+              </p>
             </form>
           </div>
         </div>
