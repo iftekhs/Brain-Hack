@@ -34,9 +34,9 @@ const Login = () => {
         const user = result.user;
         console.log(user);
         form.reset();
-        if (user.emailVerified) {
-          navigate(from, { replace: true });
-        }
+        navigate(from, { replace: true });
+        // if (user.emailVerified) {
+        // }
       })
       .catch((error) => {
         console.error(error);
