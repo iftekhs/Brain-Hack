@@ -3,6 +3,7 @@ import { Link, NavLink } from 'react-router-dom';
 import { GoThreeBars } from 'react-icons/go';
 import './Header.css';
 import { AuthContext } from '../../../contexts/AuthProvider';
+import Avatar from '../../../images/avatar.svg';
 
 const Header = () => {
   const { user, logOut } = useContext(AuthContext);
@@ -62,7 +63,7 @@ const Header = () => {
               <img
                 title={user.displayName}
                 class="w-10 h-10 rounded-full"
-                src={user.photoURL}
+                src={user.photoURL ? user.photoURL : Avatar}
                 alt="user"
                 height="60"
               />

@@ -119,7 +119,7 @@ const Login = () => {
                     </svg>
                   </div>
                 ) : (
-                  'Log In'
+                  'Sign In'
                 )}
               </button>
 

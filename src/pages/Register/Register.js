@@ -1,15 +1,66 @@
-import React, { useState } from 'react';
-import { FaGoogle } from 'react-icons/fa';
+import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
+import React, { useContext, useState } from 'react';
+import { FaGithub, FaGoogle } from 'react-icons/fa';
+import { useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../contexts/AuthProvider';
 
 const Register = () => {
   const [btnLoading, setBtnLoading] = useState(false);
+  const [error, setError] = useState(null);
+  const { createUser, providerLogin, updateUserProfile } = useContext(AuthContext);
+  const navigate = useNavigate();
 
+  //    Providers
+  const googleProvider = new GoogleAuthProvider();
+  const githubProvider = new GithubAuthProvider();
+
+  const handleUpdateUserProfile = (name, photoURL) => {
+    const profile = {
+      displayName: name,
+      photoURL: photoURL,
+    };
+    updateUserProfile(profile)
+      .then(() => {})
+      .catch((error) => console.error(error));
+  };
   const handleSubmit = (event) => {
     event.preventDefault();
     setBtnLoading(true);
-    setTimeout(() => {
-      setBtnLoading(false);
-    }, 5000);
+    setError(null);
+    const form = event.target;
+    const name = form.name.value;
+    const photoURL = form.photoURL.value;
+    const email = form.email.value;
+    const password = form.password.value;
+
+    createUser(email, password)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+        form.reset();
+        handleUpdateUserProfile(name, photoURL);
+        navigate('/');
+      })
+      .catch((e) => setError(e.message))
+      .finally(() => {
+        setBtnLoading(false);
+      });
+  };
+
+  const handleGoogleSignIn = () => {
+    providerLogin(googleProvider)
+      .then(() => {
+        navigate('/');
+      })
+      .catch((error) => console.log(error));
+  };
+
+  const handleGithubSignIn = () => {
+    providerLogin(githubProvider)
+      .then(() => {
+        navigate('/');
+      })
+      .catch((error) => console.log(error));
   };
 
   return (
@@ -31,6 +82,20 @@ const Register = () => {
             </p>
             <form onSubmit={handleSubmit} className="auth-form">
               <div className="flex flex-col mb-4">
+                <label htmlFor="name" className="mb-1 text-sm text-zinc-400">
+                  Full Name
+                </label>
+                <input className="input" id="name" type="text" name="name" required />
+              </div>
+
+              <div className="flex flex-col mb-4">
+                <label htmlFor="photoURL" className="mb-1 text-sm text-zinc-400">
+                  Photo URL
+                </label>
+                <input className="input" id="photoURL" type="text" name="photoURL" required />
+              </div>
+
+              <div className="flex flex-col mb-4">
                 <label htmlFor="email" className="mb-1 text-sm text-zinc-400">
                   Your Email
                 </label>
@@ -43,6 +108,8 @@ const Register = () => {
                 </label>
                 <input className="input" id="password" type="password" name="password" required />
               </div>
+
+              <p className="mb-2 text-rose-500">{error}</p>
 
               <button
                 disabled={btnLoading}
@@ -66,14 +133,21 @@ const Register = () => {
                     </svg>
                   </div>
                 ) : (
-                  'Log In'
+                  'Sign Up'
                 )}
               </button>
 
               <button
+                onClick={handleGoogleSignIn}
+                type="button"
+                className="w-full mb-2 border rounded-lg flex items-center justify-center py-3 gap-3 cursor-pointer hover:bg-slate-50 transition-all">
+                <FaGoogle></FaGoogle> Sign Up
+              </button>
+              <button
+                onClick={handleGithubSignIn}
                 type="button"
                 className="w-full border rounded-lg flex items-center justify-center py-3 gap-3 cursor-pointer hover:bg-slate-50 transition-all">
-                <FaGoogle></FaGoogle> Sign Up
+                <FaGithub></FaGithub> Sign Up
               </button>
             </form>
           </div>
