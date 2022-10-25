@@ -96,6 +96,8 @@ const Login = () => {
                 <input className="input" id="password" type="password" name="password" required />
               </div>
 
+              <p className="mb-2 text-rose-500">{error}</p>
+
               <button
                 disabled={btnLoading}
                 className="bg-cpurple px-8 py-3 text-white rounded w-full mb-4 transition-all">
