@@ -1,11 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
-import { FaUser } from 'react-icons/fa';
+import { FaBars } from 'react-icons/fa';
 import './Header.css';
 
 const Header = () => {
+  const [burgerMenuOpen, setBurgerMenuOpen] = useState(false);
+
+  const toggleBurgerMenu = () => {
+    setBurgerMenuOpen(!burgerMenuOpen);
+  };
+
   return (
-    <header className="header px-8 py-5">
+    <header className="header px-5 py-5">
       <div className="container mx-auto flex items-center justify-between">
         <Link to="/">
           <div className="logo-container">
@@ -14,8 +20,8 @@ const Header = () => {
             </h4>
           </div>
         </Link>
-        <div className="flex gap-4 items-center">
-          <nav>
+        <nav className="hidden md:flex gap-4 items-center">
+          <div>
             <NavLink
               className={({ isActive }) =>
                 isActive ? 'text-1xl header-link active-header-link' : 'text-1xl header-link'
@@ -37,7 +43,7 @@ const Header = () => {
               to="/blog">
               Blog
             </NavLink>
-          </nav>
+          </div>
 
           <label
             htmlFor="checked-toggle"
@@ -46,9 +52,67 @@ const Header = () => {
             <div className="w-11 h-6 bg-gray-200 rounded-full peer peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
           </label>
 
-          <button className="btn bg-cpurple text-white hover:bg-violet-600">Sign In</button>
-          <button className="btn bg-cpurple text-white hover:bg-violet-600">Sign Up</button>
-        </div>
+          <Link to="/login" className="btn bg-cpurple text-white hover:bg-violet-600">
+            Sign In
+          </Link>
+          <Link to="/register" className="btn bg-cpurple text-white hover:bg-violet-600">
+            Sign Up
+          </Link>
+        </nav>
+        <button
+          onClick={toggleBurgerMenu}
+          className={`btn ${burgerMenuOpen && 'bg-cgray'} block md:hidden btn-burger text-2xl`}>
+          <FaBars></FaBars>
+        </button>
+      </div>
+      <div className={`container ${!burgerMenuOpen && 'hidden'} mx-auto py-3  mt-2`}>
+        <ul>
+          <li className="mb-4">
+            <NavLink
+              className={({ isActive }) =>
+                isActive ? 'text-1xl header-link active-header-link' : 'text-1xl header-link'
+              }
+              to="/courses">
+              Courses
+            </NavLink>
+          </li>
+          <li className="mb-4">
+            <NavLink
+              className={({ isActive }) =>
+                isActive ? 'text-1xl header-link active-header-link' : 'text-1xl header-link'
+              }
+              to="/faq">
+              FAQ
+            </NavLink>
+          </li>
+          <li className="mb-4">
+            <NavLink
+              className={({ isActive }) =>
+                isActive ? 'text-1xl header-link active-header-link' : 'text-1xl header-link'
+              }
+              to="/blog">
+              Blog
+            </NavLink>
+          </li>
+          <li className="mb-4">
+            <label
+              htmlFor="checked-toggle-menu"
+              className="ml-2 inline-flex relative items-center cursor-pointer">
+              <input type="checkbox" value="" id="checked-toggle-menu" className="sr-only peer" />
+              <div className="w-11 h-6 bg-gray-200 rounded-full peer peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
+            </label>
+          </li>
+          <li className="mb-7 ml-2">
+            <Link to="/login" className="btn bg-cpurple text-white hover:bg-violet-600">
+              Sign In
+            </Link>
+          </li>
+          <li className="ml-2">
+            <Link to="/register" className="btn bg-cpurple text-white hover:bg-violet-600">
+              Sign Up
+            </Link>
+          </li>
+        </ul>
       </div>
     </header>
   );
