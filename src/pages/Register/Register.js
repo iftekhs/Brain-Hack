@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import { FaGoogle } from 'react-icons/fa';
-import './Login.css';
 
-const Login = () => {
+const Register = () => {
   const [btnLoading, setBtnLoading] = useState(false);
 
   const handleSubmit = (event) => {
@@ -74,7 +73,7 @@ const Login = () => {
               <button
                 type="button"
                 className="w-full border rounded-lg flex items-center justify-center py-3 gap-3 cursor-pointer hover:bg-slate-50 transition-all">
-                <FaGoogle></FaGoogle> Sign In
+                <FaGoogle></FaGoogle> Sign Up
               </button>
             </form>
           </div>
@@ -84,4 +83,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Register;
