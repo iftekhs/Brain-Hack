@@ -7,7 +7,7 @@ const SideNavItem = ({ category }) => {
   const { _id, name } = category;
   return (
     <li className="side-nav-link font-semibold text-xl mb-8">
-      <Link to={`/category/${_id}`}>
+      <Link to={`/courses/${_id}`}>
         <div className="side-nav-anchor">
           <h4> {name} </h4>
         </div>

@@ -1,9 +1,7 @@
 .courses-container {
   display: grid;
   grid-template-columns: 300px 1fr;
-  min-height: 100vh;
 }
-
 
 @media (max-width: 1023px) {
   .courses-container {

@@ -32,7 +32,7 @@ const Header = () => {
               className={({ isActive }) =>
                 isActive ? 'text-1xl header-link active-header-link' : 'text-1xl header-link'
               }
-              to="/courses">
+              to="/courses/00">
               Courses
             </NavLink>
             <NavLink
@@ -95,7 +95,7 @@ const Header = () => {
               className={({ isActive }) =>
                 isActive ? 'text-1xl header-link active-header-link' : 'text-1xl header-link'
               }
-              to="/courses">
+              to="/courses/00">
               Courses
             </NavLink>
           </li>
