@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
+import SideNavItem from '../SideNavItem/SideNavItem';
 import './LeftSideNav.css';
-import SideNavItem from './SideNavItem/SideNavItem';
 
 const LeftSideNav = () => {
   const [categories, setCategories] = useState([]);

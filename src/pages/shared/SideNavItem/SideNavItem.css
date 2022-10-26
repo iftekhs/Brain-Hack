@@ -24,3 +24,11 @@
 .side-nav-link:hover .arrow {
   left: 0;
 }
+
+.active-side-nav-link .side-nav-anchor {
+  transform: translateX(30px);
+}
+
+.active-side-nav-link .arrow {
+  left: 0;
+}
