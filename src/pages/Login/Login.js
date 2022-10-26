@@ -64,9 +64,9 @@ const Login = () => {
   };
 
   return (
-    <section className="px-2">
+    <section className="px-2 py-5">
       <div className="auth-container container mx-auto flex items-center justify-center">
-        <div className="auth-form-container grid grid-cols-2 rounded">
+        <div className="auth-form-container grid md:grid-cols-2 rounded">
           <div className="left text-white flex flex-col text-center">
             <h4 className="text-md text-center mb-2"> The ultimate learning platform</h4>
             <img className="logo" src={logo} alt="" />
@@ -77,7 +77,7 @@ const Login = () => {
             </p>
           </div>
           <div className="right flex flex-col items-center justify-center">
-            <h2 className="text-3xl mb-2">Welcome to BrainHack!</h2>
+            <h2 className="text-3xl mb-2 text-center">Welcome to BrainHack!</h2>
             <p className="text-md text-center text-slate-400 mb-8">
               We are currently giving users a special offer of 20% off on all our courses!
             </p>

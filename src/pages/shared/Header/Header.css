@@ -12,6 +12,10 @@
   border-radius: 5px;
 }
 
+.user-profile-pic:hover ~ .tooltip {
+  display: block;
+}
+
 .header-link:hover,
 .active-header-link {
   background-color: #f7f7ff;

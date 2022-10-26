@@ -69,13 +69,19 @@ const Header = ({ darkMode, toggleMode }) => {
 
           {user && user.uid ? (
             <>
-              <img
-                title={user.displayName}
-                className="w-10 h-10 rounded-full"
-                src={user.photoURL ? user.photoURL : Avatar}
-                alt="user"
-                height="60"
-              />
+              <div className="relative">
+                <img
+                  className="user-profile-pic w-10 h-10 rounded-full"
+                  src={user.photoURL ? user.photoURL : Avatar}
+                  alt="user"
+                  height="60"
+                />
+                <div
+                  className={`text-center hidden tooltip absolute left-0 mt-2 z-10 py-2 px-3 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm  dark:bg-gray-700`}>
+                  {user.displayName}
+                </div>
+              </div>
+
               <button onClick={signOut} className="btn bg-cpurple text-white hover:bg-violet-600">
                 Sign Out
               </button>
@@ -138,13 +144,18 @@ const Header = ({ darkMode, toggleMode }) => {
           {user && user.uid ? (
             <>
               <li className="mb-4 ml-2">
-                <img
-                  title={user.displayName}
-                  className="w-10 h-10 rounded-full"
-                  src={user.photoURL ? user.photoURL : Avatar}
-                  alt="user"
-                  height="60"
-                />
+                <div className="relative">
+                  <img
+                    className="user-profile-pic w-10 h-10 rounded-full"
+                    src={user.photoURL ? user.photoURL : Avatar}
+                    alt="user"
+                    height="60"
+                  />
+                  <div
+                    className={`text-center hidden tooltip absolute left-0 mt-2 z-10 py-2 px-3 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm  dark:bg-gray-700`}>
+                    {user.displayName}
+                  </div>
+                </div>
               </li>
               <li className="mb-4 ml-2">
                 <button onClick={signOut} className="btn bg-cpurple text-white hover:bg-violet-600">
