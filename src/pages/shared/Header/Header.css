@@ -2,6 +2,10 @@
   border-bottom: 1px solid lightgray;
 }
 
+.logo {
+  height: 60px;
+}
+
 .header-link {
   transition: 100ms all ease-in-out;
   padding: 0.5rem 0.8rem;

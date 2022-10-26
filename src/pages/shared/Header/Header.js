@@ -4,6 +4,7 @@ import { GoThreeBars } from 'react-icons/go';
 import './Header.css';
 import { AuthContext } from '../../../contexts/AuthProvider';
 import Avatar from '../../../images/avatar.svg';
+import logo from '../../../images/logo.svg';
 
 const Header = () => {
   const { user, logOut } = useContext(AuthContext);
@@ -20,7 +21,8 @@ const Header = () => {
     <header className="header px-5 py-5">
       <div className="container mx-auto flex items-center justify-between">
         <Link to="/">
-          <div className="logo-container">
+          <div className="logo-container flex items-center justify-center gap-1">
+            <img className="logo" src={logo} height="30" alt="" />
             <h4 className="text-4xl font-bold">
               Brain<span className="text-cpurple">H</span>ack
             </h4>

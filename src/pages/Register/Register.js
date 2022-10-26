@@ -3,6 +3,7 @@ import React, { useContext, useState } from 'react';
 import { FaGithub, FaGoogle } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider';
+import logo from '../../images/logo.svg';
 
 const Register = () => {
   const [btnLoading, setBtnLoading] = useState(false);
@@ -69,6 +70,7 @@ const Register = () => {
         <div className="auth-form-container grid grid-cols-2 rounded">
           <div className="left text-white flex flex-col text-center">
             <h4 className="text-md text-center mb-2"> The ultimate learning platform</h4>
+            <img className="logo" src={logo} alt="" />
             <h2 className="text-4xl font-bold mb-4">BrainHack</h2>
             <p>
               Over 1,200 + courses on different programming languages created by our expert

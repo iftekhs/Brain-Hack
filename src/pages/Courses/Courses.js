@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { useLoaderData } from 'react-router-dom';
+import Course from '../shared/Course/Course';
 import LeftSideNav from '../shared/LeftSideNav/LeftSideNav';
-import Course from './Course/Course';
 import './Courses.css';
 
 const Courses = () => {

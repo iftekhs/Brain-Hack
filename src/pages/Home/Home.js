@@ -3,6 +3,7 @@ import { FaRegChartBar } from 'react-icons/fa';
 import { AiOutlineSearch } from 'react-icons/ai';
 import { BsBullseye } from 'react-icons/bs';
 import './Home.css';
+import { Link } from 'react-router-dom';
 const Home = () => {
   return (
     <>
@@ -17,9 +18,11 @@ const Home = () => {
             <br className="hidden md:block" /> So why wait? start your programming journey right
             now!
           </p>
-          <button className="px-5 py-3 rounded bg-cpurple text-white transition-all hover:bg-violet-600">
+          <Link
+            to="/courses/00"
+            className="px-5 py-3 rounded bg-cpurple text-white transition-all hover:bg-violet-600">
             Get Started Now
-          </button>
+          </Link>
         </div>
       </section>
       <div className="shape-container">
