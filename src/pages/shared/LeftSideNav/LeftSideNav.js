@@ -13,7 +13,7 @@ const LeftSideNav = () => {
   });
 
   return (
-    <aside className="left-side-nav px-10">
+    <aside className="hidden lg:block left-side-nav px-10">
       <ul className="side-nav-links">
         {categories.map((category) => (
           <SideNavItem key={category._id} category={category}></SideNavItem>
