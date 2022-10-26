@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import { FaCrown } from 'react-icons/fa';
+import { FaCloudDownloadAlt, FaCrown } from 'react-icons/fa';
 import { Link, useLoaderData } from 'react-router-dom';
 import ReactToPdf from 'react-to-pdf';
 import Loader from '../Loader/Loader';
@@ -22,7 +22,7 @@ const CourseDetails = () => {
               <button
                 onClick={toPdf}
                 className="btn text-sm bg-cpurple text-white hover:bg-violet-600">
-                Download PDF
+                <FaCloudDownloadAlt></FaCloudDownloadAlt>
               </button>
             )}
           </ReactToPdf>

@@ -89,7 +89,7 @@ const Header = ({ darkMode, toggleMode }) => {
           ) : (
             <>
               <Link to="/login" className="btn bg-cpurple text-white hover:bg-violet-600">
-                Sign In
+                Log In
               </Link>
               <Link to="/register" className="btn bg-cpurple text-white hover:bg-violet-600">
                 Sign Up
@@ -167,7 +167,7 @@ const Header = ({ darkMode, toggleMode }) => {
             <>
               <li className="mb-7 ml-2">
                 <Link to="/login" className="btn bg-cpurple text-white hover:bg-violet-600">
-                  Sign In
+                  Log In
                 </Link>
               </li>
               <li className="ml-2">
