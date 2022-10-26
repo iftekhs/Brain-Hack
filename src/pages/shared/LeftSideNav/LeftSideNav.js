@@ -12,7 +12,7 @@ const LeftSideNav = () => {
       .then((res) => res.json())
       .then((data) => setCategories(data))
       .catch((error) => console.log(error));
-  });
+  }, []);
 
   return (
     <>
