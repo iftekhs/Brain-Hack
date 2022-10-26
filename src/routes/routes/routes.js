@@ -1,15 +1,15 @@
 import { createBrowserRouter } from 'react-router-dom';
-import Main from '../layouts/Main';
-import Blog from '../pages/Blog/Blog';
-import Checkout from '../pages/Checkout/Checkout';
-import CourseDetails from '../pages/CourseDetails/CourseDetails';
-import Courses from '../pages/Courses/Courses';
-import FAQ from '../pages/FAQ/FAQ';
-import Home from '../pages/Home/Home';
-import Login from '../pages/Login/Login';
-import NotFound from '../pages/NotFound/NotFound';
-import Register from '../pages/Register/Register';
-import PrivateRoute from './PrivateRoute/PrivateRoute';
+import Main from '../../layouts/Main';
+import Blog from '../../pages/Blog/Blog';
+import Checkout from '../../pages/Checkout/Checkout';
+import CourseDetails from '../../pages/CourseDetails/CourseDetails';
+import Courses from '../../pages/Courses/Courses';
+import FAQ from '../../pages/FAQ/FAQ';
+import Home from '../../pages/Home/Home';
+import Login from '../../pages/Login/Login';
+import NotFound from '../../pages/NotFound/NotFound';
+import Register from '../../pages/Register/Register';
+import PrivateRoute from '../PrivateRoute/PrivateRoute';
 
 export const routes = createBrowserRouter([
   {
