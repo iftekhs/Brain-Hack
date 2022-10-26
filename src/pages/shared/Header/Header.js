@@ -62,7 +62,7 @@ const Header = () => {
             <>
               <img
                 title={user.displayName}
-                class="w-10 h-10 rounded-full"
+                className="w-10 h-10 rounded-full"
                 src={user.photoURL ? user.photoURL : Avatar}
                 alt="user"
                 height="60"
