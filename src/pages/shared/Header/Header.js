@@ -127,16 +127,38 @@ const Header = () => {
               <div className="w-11 h-6 bg-gray-200 rounded-full peer peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
             </label>
           </li>
-          <li className="mb-7 ml-2">
-            <Link to="/login" className="btn bg-cpurple text-white hover:bg-violet-600">
-              Sign In
-            </Link>
-          </li>
-          <li className="ml-2">
-            <Link to="/register" className="btn bg-cpurple text-white hover:bg-violet-600">
-              Sign Up
-            </Link>
-          </li>
+
+          {user && user.uid ? (
+            <>
+              <li className="mb-4 ml-2">
+                <img
+                  title={user.displayName}
+                  className="w-10 h-10 rounded-full"
+                  src={user.photoURL ? user.photoURL : Avatar}
+                  alt="user"
+                  height="60"
+                />
+              </li>
+              <li className="mb-4 ml-2">
+                <button onClick={signOut} className="btn bg-cpurple text-white hover:bg-violet-600">
+                  Sign Out
+                </button>
+              </li>
+            </>
+          ) : (
+            <>
+              <li className="mb-7 ml-2">
+                <Link to="/login" className="btn bg-cpurple text-white hover:bg-violet-600">
+                  Sign In
+                </Link>
+              </li>
+              <li className="ml-2">
+                <Link to="/register" className="btn bg-cpurple text-white hover:bg-violet-600">
+                  Sign Up
+                </Link>
+              </li>
+            </>
+          )}
         </ul>
       </div>
     </header>

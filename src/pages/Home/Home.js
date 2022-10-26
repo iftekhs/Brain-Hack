@@ -25,6 +25,7 @@ const Home = () => {
           </Link>
         </div>
       </section>
+      
       <div className="shape-container">
         <div className="shape">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
@@ -75,6 +76,7 @@ const Home = () => {
           </div>
         </div>
       </section>
+      <div className="my-20"></div>
     </>
   );
 };
