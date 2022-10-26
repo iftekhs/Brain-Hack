@@ -15,6 +15,10 @@ const Checkout = () => {
     setTimeout(() => {
       setBtnLoading(false);
       setSuccess(true);
+      event.target.reset();
+      setTimeout(() => {
+        setSuccess(false);
+      }, 1000);
     }, 1000);
   };
 

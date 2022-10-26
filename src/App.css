@@ -3,6 +3,10 @@
   color: #070600;
 }
 
+.container-md {
+  max-width: 780px;
+}
+
 .btn {
   padding: 8px 20px;
   border-radius: 5px;
