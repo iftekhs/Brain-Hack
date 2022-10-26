@@ -1,7 +1,7 @@
 import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
 import React, { useContext, useState } from 'react';
 import { FaGithub, FaGoogle } from 'react-icons/fa';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider';
 import logo from '../../images/logo.svg';
 
@@ -151,6 +151,13 @@ const Register = () => {
                 className="w-full border rounded-lg flex items-center justify-center py-3 gap-3 cursor-pointer hover:bg-slate-50 transition-all">
                 <FaGithub></FaGithub> Sign Up
               </button>
+
+              <p className="mt-8 text-slate-400 text-center">
+                Already have an account?
+                <Link to="/login" className="ml-1 text-cpurple font-semibold">
+                  Sign In
+                </Link>
+              </p>
             </form>
           </div>
         </div>
