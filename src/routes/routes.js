@@ -8,6 +8,7 @@ import Home from '../pages/Home/Home';
 import Login from '../pages/Login/Login';
 import NotFound from '../pages/NotFound/NotFound';
 import Register from '../pages/Register/Register';
+import PrivateRoute from './PrivateRoute/PrivateRoute';
 
 export const routes = createBrowserRouter([
   {
@@ -40,7 +41,11 @@ export const routes = createBrowserRouter([
       },
       {
         path: '/checkout/:id',
-        element: <Checkout></Checkout>,
+        element: (
+          <PrivateRoute>
+            <Checkout></Checkout>
+          </PrivateRoute>
+        ),
         loader: ({ params }) =>
           fetch(`${process.env.REACT_APP_SERVER_API_ROOT}/course/${params.id}`),
       },

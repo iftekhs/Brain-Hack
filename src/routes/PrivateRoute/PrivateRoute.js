@@ -1,5 +1,4 @@
 import React, { useContext } from 'react';
-import { Spinner } from 'react-bootstrap';
 import { Navigate, useLocation } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider';
 import Loader from '../../pages/Loader/Loader';

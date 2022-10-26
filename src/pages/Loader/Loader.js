@@ -1,12 +1,13 @@
 import React from 'react';
+import './Loader.css';
 
 const Loader = () => {
   return (
-    <div className="container w-full h-96 flex items-center justify-center">
+    <div className="loader-container flex items-center justify-center">
       <div role="status">
         <svg
           aria-hidden="true"
-          class="mr-2 w-8 h-8 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600"
+          class="mr-2 w-8 h-8 text-gray-200 animate-spin dark:text-gray-600 fill-cpurple"
           viewBox="0 0 100 101"
           fill="none"
           xmlns="http://www.w3.org/2000/svg">
