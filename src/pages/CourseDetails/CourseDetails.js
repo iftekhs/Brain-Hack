@@ -11,21 +11,23 @@ const CourseDetails = () => {
 
   return (
     <section className="px-2 py-8">
+      <div className="container-md mx-auto flex justify-end">
+        <ReactToPdf targetRef={courseRef} filename="course.pdf">
+          {({ toPdf }) => (
+            <button
+              onClick={toPdf}
+              className="btn text-sm bg-cpurple text-white hover:bg-violet-600">
+              <FaCloudDownloadAlt></FaCloudDownloadAlt>
+            </button>
+          )}
+        </ReactToPdf>
+      </div>
       <div ref={courseRef} className="container-md mx-auto">
         <div className="mb-6 flex justify-center md:justify-start">
           <img className="rounded-lg" src={thumbnail_url} alt="" />
         </div>
         <div className="mb-8 flex flex-col items-center md:items-start justify-center gap-4">
           <h2 className="text-center md:text-left text-4xl font-bold">{title}</h2>
-          <ReactToPdf targetRef={courseRef} filename="course.pdf">
-            {({ toPdf }) => (
-              <button
-                onClick={toPdf}
-                className="btn text-sm bg-cpurple text-white hover:bg-violet-600">
-                <FaCloudDownloadAlt></FaCloudDownloadAlt>
-              </button>
-            )}
-          </ReactToPdf>
         </div>
         <p className="leading-8 text-md mb-5 italic text-gray-600">{intro_text}</p>
         <p className="leading-8 text-md mb-5 text-gray-700">{description}</p>

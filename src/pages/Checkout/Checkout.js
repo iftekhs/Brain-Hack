@@ -67,7 +67,7 @@ const Checkout = () => {
               {btnLoading ? (
                 <div className="w-full flex items-center justify-center">
                   <svg
-                    class="mr-2 w-6 h-6 text-cpurple fill-white animate-spin"
+                    className="mr-2 w-6 h-6 text-cpurple fill-white animate-spin"
                     viewBox="0 0 100 101"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg">

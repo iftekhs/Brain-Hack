@@ -131,7 +131,7 @@ const Login = () => {
                 {btnLoading ? (
                   <div className="flex items-center justify-center">
                     <svg
-                      class="mr-2 w-6 h-6 text-cpurple fill-white animate-spin"
+                      className="mr-2 w-6 h-6 text-cpurple fill-white animate-spin"
                       viewBox="0 0 100 101"
                       fill="none"
                       xmlns="http://www.w3.org/2000/svg">
@@ -149,7 +149,7 @@ const Login = () => {
                   'Sign In'
                 )}
               </button>
-              <button className="mb-4" type="button" onClick={handleReset}>
+              <button className="mt-2 mb-4 text-blue-500" type="button" onClick={handleReset}>
                 Forgot Password?
               </button>
 
