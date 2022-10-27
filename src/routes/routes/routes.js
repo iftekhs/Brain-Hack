@@ -8,6 +8,7 @@ import FAQ from '../../pages/FAQ/FAQ';
 import Home from '../../pages/Home/Home';
 import Login from '../../pages/Login/Login';
 import NotFound from '../../pages/NotFound/NotFound';
+import Profile from '../../pages/Profile/Profile';
 import Register from '../../pages/Register/Register';
 import PrivateRoute from '../PrivateRoute/PrivateRoute';
 
@@ -49,6 +50,14 @@ export const routes = createBrowserRouter([
         ),
         loader: ({ params }) =>
           fetch(`${process.env.REACT_APP_SERVER_API_ROOT}/course/${params.id}`),
+      },
+      {
+        path: '/profile',
+        element: (
+          <PrivateRoute>
+            <Profile></Profile>
+          </PrivateRoute>
+        ),
       },
       {
         path: '/blog',
