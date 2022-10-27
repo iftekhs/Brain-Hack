@@ -3,7 +3,7 @@ import {
   createUserWithEmailAndPassword,
   getAuth,
   onAuthStateChanged,
-  sendEmailVerification,
+  sendPasswordResetEmail,
   signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
@@ -24,6 +24,10 @@ const AuthProvider = ({ children }) => {
     return signInWithPopup(auth, provider);
   };
 
+  const resetEmail = (email) => {
+    return sendPasswordResetEmail(auth, email);
+  };
+
   const createUser = (email, password) => {
     setLoading(true);
     return createUserWithEmailAndPassword(auth, email, password);
@@ -36,10 +40,6 @@ const AuthProvider = ({ children }) => {
 
   const updateUserProfile = (profile) => {
     return updateProfile(auth.currentUser, profile);
-  };
-
-  const verifyEmail = () => {
-    return sendEmailVerification(auth.currentUser);
   };
 
   const logOut = () => {
@@ -65,7 +65,7 @@ const AuthProvider = ({ children }) => {
     signIn,
     updateUserProfile,
     logOut,
-    verifyEmail,
+    resetEmail,
     setLoading,
   };
 

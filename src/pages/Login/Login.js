@@ -1,5 +1,5 @@
 import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
-import React, { useContext, useState } from 'react';
+import React, { useContext, useRef, useState } from 'react';
 import { FaGithub, FaGoogle } from 'react-icons/fa';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider';
@@ -7,9 +7,10 @@ import logo from '../../images/logo.svg';
 import './Login.css';
 
 const Login = () => {
-  const { signIn, providerLogin, setLoading } = useContext(AuthContext);
+  const { signIn, providerLogin, resetEmail, setLoading } = useContext(AuthContext);
   const [btnLoading, setBtnLoading] = useState(false);
   const [error, setError] = useState(null);
+  const formRef = useRef();
 
   //   Navigate & Location
   const navigate = useNavigate();
@@ -63,6 +64,19 @@ const Login = () => {
       .catch((error) => console.log(error));
   };
 
+  const handleReset = () => {
+    const form = formRef.current;
+    const email = form.email.value;
+    if (!email) {
+      return setError('Please enter the email to reset password.');
+    }
+    resetEmail(email)
+      .then(() => {
+        console.log('completed');
+      })
+      .catch((error) => setError(error.message));
+  };
+
   return (
     <section className="px-2 py-5">
       <div className="auth-container container mx-auto flex items-center justify-center">
@@ -81,7 +95,7 @@ const Login = () => {
             <p className="text-md text-center text-slate-400 mb-8">
               We are currently giving users a special offer of 20% off on all our courses!
             </p>
-            <form onSubmit={handleSubmit} className="auth-form">
+            <form ref={formRef} onSubmit={handleSubmit} className="auth-form">
               <div className="flex flex-col mb-4">
                 <label htmlFor="email" className="mb-1 text-sm text-zinc-400">
                   Your Email
@@ -100,7 +114,7 @@ const Login = () => {
 
               <button
                 disabled={btnLoading}
-                className="bg-cpurple px-8 py-3 text-white rounded w-full mb-4 transition-all">
+                className="bg-cpurple px-8 py-3 text-white rounded w-full transition-all">
                 {btnLoading ? (
                   <div className="flex items-center justify-center">
                     <svg
@@ -121,6 +135,9 @@ const Login = () => {
                 ) : (
                   'Sign In'
                 )}
+              </button>
+              <button className="mb-4" type="button" onClick={handleReset}>
+                Forgot Password?
               </button>
 
               <button
