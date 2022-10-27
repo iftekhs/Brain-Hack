@@ -22,15 +22,17 @@ const CourseDetails = () => {
           )}
         </ReactToPdf>
       </div>
-      <div ref={courseRef} className="dark:text-white container-md mx-auto">
+      <div ref={courseRef} className="dark:bg-cdark dark:text-white container-md mx-auto">
         <div className="mb-6 flex justify-center md:justify-start">
           <img className="rounded-lg" src={thumbnail_url} alt="" />
         </div>
         <div className="mb-8 flex flex-col items-center md:items-start justify-center gap-4">
           <h2 className="text-center md:text-left text-4xl font-bold">{title}</h2>
         </div>
-        <p className="leading-8 text-md mb-5 italic text-gray-600">{intro_text}</p>
-        <p className="leading-8 text-md mb-5 text-gray-700">{description}</p>
+        <p className="leading-8 text-md mb-5 italic dark:text-gray-500 text-gray-600">
+          {intro_text}
+        </p>
+        <p className="leading-8 text-md mb-5 dark:text-gray-300 text-gray-700">{description}</p>
         <p className="text-xl font-semibold">Price: ${price}</p>
       </div>
       <div className="container-md mx-auto">

@@ -103,7 +103,9 @@ const Header = ({ darkMode }) => {
         </nav>
         <button
           onClick={toggleBurgerMenu}
-          className={`btn ${burgerMenuOpen && 'bg-cgray'} block md:hidden btn-burger text-3xl`}>
+          className={`btn ${
+            burgerMenuOpen && 'bg-cgray dark:bg-slate-500'
+          } block md:hidden btn-burger text-3xl hover:bg-cgray dark:hover:bg-slate-500`}>
           <GoThreeBars></GoThreeBars>
         </button>
       </div>
@@ -140,7 +142,14 @@ const Header = ({ darkMode }) => {
             <label
               htmlFor="checked-toggle-menu"
               className="ml-2 inline-flex relative items-center cursor-pointer">
-              <input type="checkbox" value="" id="checked-toggle-menu" className="sr-only peer" />
+              <input
+                onChange={toggleMode}
+                checked={darkMode}
+                type="checkbox"
+                value=""
+                id="checked-toggle-menu"
+                className="sr-only peer"
+              />
               <div className="w-11 h-6 bg-gray-200 rounded-full peer peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
             </label>
           </li>

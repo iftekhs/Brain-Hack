@@ -11,7 +11,9 @@ const NotFound = () => {
       <div className="not-found-contianer flex items-center justify-center">
         <div className="not-found-content flex flex-col items-center">
           <img className="mb-10" src={NotFoundImage} alt="" />
-          <h2 className="mb-5 text-4xl font-semibold text-white">Oop's Look's like your lost!</h2>
+          <h2 className="mb-5 text-4xl font-semibold text-white text-center">
+            Oop's Look's like your lost!
+          </h2>
           <button onClick={() => navigate(-1)} className="btn bg-white hover:bg-slate-50">
             Go Back
           </button>

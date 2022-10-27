@@ -7,7 +7,7 @@ const Checkout = () => {
   const [btnLoading, setBtnLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const course = useLoaderData();
-  const { title, intro_text, thumbnail_url } = course;
+  const { title, intro_text, price, thumbnail_url } = course;
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -30,6 +30,7 @@ const Checkout = () => {
             <img className="rounded" src={thumbnail_url} alt="" />
             <h2 className="text-2xl font-semibold">{title}</h2>
             <p className="text-gray-600">{intro_text}</p>
+            <p className="text-xl font-semibold">Price: ${price}</p>
           </div>
 
           <form onSubmit={handleSubmit}>

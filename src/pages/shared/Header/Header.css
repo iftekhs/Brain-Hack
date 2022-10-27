@@ -26,7 +26,3 @@
   border: 1px solid lightgray;
   transition: 100ms all ease-in-out;
 }
-
-.btn-burger:hover {
-  background-color: #f7f7ff;
-}
