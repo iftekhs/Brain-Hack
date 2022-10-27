@@ -5,6 +5,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider';
 import logo from '../../images/logo.svg';
 import './Login.css';
+import toast, { Toaster } from 'react-hot-toast';
 
 const Login = () => {
   const { signIn, providerLogin, resetEmail, setLoading } = useContext(AuthContext);
@@ -65,14 +66,26 @@ const Login = () => {
   };
 
   const handleReset = () => {
+    setError(null);
     const form = formRef.current;
     const email = form.email.value;
     if (!email) {
       return setError('Please enter the email to reset password.');
     }
+    if (
+      !email
+        .toLowerCase()
+        .match(
+          /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+        )
+    ) {
+      return setError('Please enter a valid email');
+    }
     resetEmail(email)
       .then(() => {
-        console.log('completed');
+        toast.success('We have sent a password reset link to your email address!', {
+          duration: 5000,
+        });
       })
       .catch((error) => setError(error.message));
   };
@@ -162,6 +175,7 @@ const Login = () => {
           </div>
         </div>
       </div>
+      <Toaster position="bottom-left" reverseOrder={false} />
     </section>
   );
 };
