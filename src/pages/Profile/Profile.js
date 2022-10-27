@@ -1,47 +1,86 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
+import { AuthContext } from '../../contexts/AuthProvider';
+import toast, { Toaster } from 'react-hot-toast';
+import './Profile.css';
 
 const Profile = () => {
   const [btnLoading, setBtnLoading] = useState(false);
+  const { user, trigger, setTrigger, updateUserProfile } = useContext(AuthContext);
+
+  const handleUpdateUserProfile = (name, photoURL) => {
+    const profile = {
+      displayName: name,
+      photoURL: photoURL,
+    };
+    updateUserProfile(profile)
+      .then(() => {
+        setTrigger(!trigger);
+        setBtnLoading(false);
+        toast.success('Credentials updated successfully!');
+      })
+      .catch((error) => console.error(error));
+  };
+
   const handleSubmit = (event) => {
+    setBtnLoading(true);
     event.preventDefault();
+    const form = event.target;
+    const name = form.name.value;
+    const photoURL = form.photoURL.value;
+    handleUpdateUserProfile(name, photoURL);
   };
 
   return (
     <section className="px-2 py-5">
       <div className="profile-container container mx-auto flex items-center justify-center">
-        <div className="profile-card mt-10 md:mt-0 rounded px-5 py-8 grid md:grid-cols-2 gap-8">
+        <div className="profile-card dark:bg-slate-800 mt-10 md:mt-0 rounded px-5 py-8">
           <form onSubmit={handleSubmit}>
             <div className="flex flex-col mb-4">
               <label htmlFor="name" className="mb-1 text-sm text-zinc-400">
                 Full Name
               </label>
-              <input className="input" id="name" type="text" name="name" required />
+              <input
+                defaultValue={user.displayName}
+                className="input"
+                id="name"
+                type="text"
+                name="name"
+                required
+              />
             </div>
 
             <div className="flex flex-col mb-4">
               <label htmlFor="photoURL" className="mb-1 text-sm text-zinc-400">
                 Photo URL
               </label>
-              <input className="input" id="photoURL" type="text" name="photoURL" required />
+              <input
+                defaultValue={user.photoURL}
+                className="input"
+                id="photoURL"
+                type="text"
+                name="photoURL"
+                required
+              />
             </div>
 
             <div className="flex flex-col mb-4">
               <label htmlFor="email" className="mb-1 text-sm text-zinc-400">
                 Your Email
               </label>
-              <input className="input" id="email" type="email" name="email" required />
-            </div>
-
-            <div className="flex flex-col mb-8">
-              <label htmlFor="password" className="mb-1 text-sm text-zinc-400">
-                Your Password
-              </label>
-              <input className="input" id="password" type="password" name="password" required />
+              <input
+                defaultValue={user.email}
+                readOnly
+                className="input"
+                id="email"
+                type="email"
+                name="email"
+                required
+              />
             </div>
 
             <button
               disabled={btnLoading}
-              className="bg-cpurple px-8 py-3 text-white rounded w-full transition-all">
+              className="bg-cpurple px-8 py-3 text-white rounded w-full transition-all hover:bg-violet-600">
               {btnLoading ? (
                 <div className="flex items-center justify-center">
                   <svg
@@ -66,6 +105,7 @@ const Profile = () => {
           </form>
         </div>
       </div>
+      <Toaster position="bottom-left" reverseOrder={false} />
     </section>
   );
 };

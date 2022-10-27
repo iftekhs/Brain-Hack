@@ -16,6 +16,7 @@ const auth = getAuth(app);
 
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
+  const [trigger, setTrigger] = useState(false);
   const [loading, setLoading] = useState(true);
 
   // --------------  Auth Functions --------------
@@ -54,7 +55,7 @@ const AuthProvider = ({ children }) => {
     });
 
     return () => unsubscribe();
-  }, []);
+  }, [trigger]);
   // -------------- Auth Functions  --------------
 
   const authInfo = {
@@ -67,7 +68,8 @@ const AuthProvider = ({ children }) => {
     logOut,
     resetEmail,
     setLoading,
-    setUser
+    trigger,
+    setTrigger,
   };
 
   return <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>;

@@ -25,8 +25,8 @@ const Checkout = () => {
   return (
     <section className="px-2 py-5">
       <div className="checkout-container container mx-auto flex items-center justify-center">
-        <div className="checkout-card mt-10 md:mt-0 rounded px-5 py-8 grid md:grid-cols-2 gap-8">
-          <div className="flex flex-col gap-4">
+        <div className="checkout-card dark:bg-slate-800 mt-10 md:mt-0 rounded px-5 py-8 grid md:grid-cols-2 gap-8">
+          <div className="dark:text-white flex flex-col gap-4">
             <img className="rounded" src={thumbnail_url} alt="" />
             <h2 className="text-2xl font-semibold">{title}</h2>
             <p className="text-gray-600">{intro_text}</p>

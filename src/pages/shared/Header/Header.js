@@ -5,8 +5,10 @@ import './Header.css';
 import { AuthContext } from '../../../contexts/AuthProvider';
 import Avatar from '../../../images/avatar.svg';
 import logo from '../../../images/logo.svg';
+import { ThemeContext } from '../../../contexts/ThemeProvider';
 
-const Header = ({ darkMode, toggleMode }) => {
+const Header = ({ darkMode }) => {
+  const { toggleMode } = useContext(ThemeContext);
   const { user, logOut } = useContext(AuthContext);
   const [burgerMenuOpen, setBurgerMenuOpen] = useState(false);
   const toggleBurgerMenu = () => {
@@ -18,7 +20,7 @@ const Header = ({ darkMode, toggleMode }) => {
   };
 
   return (
-    <header className="header px-5 py-5">
+    <header className="dark:bg-cdark dark:text-white header px-5 py-5">
       <div className="container mx-auto flex items-center justify-between">
         <Link to="/">
           <div className="logo-container flex items-center justify-center gap-1">
@@ -69,18 +71,20 @@ const Header = ({ darkMode, toggleMode }) => {
 
           {user && user.uid ? (
             <>
-              <div className="relative">
-                <img
-                  className="user-profile-pic w-10 h-10 rounded-full"
-                  src={user.photoURL ? user.photoURL : Avatar}
-                  alt="user"
-                  height="60"
-                />
-                <div
-                  className={`text-center hidden tooltip absolute left-0 mt-2 z-10 py-2 px-3 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm  dark:bg-gray-700`}>
-                  {user.displayName}
+              <Link to="/profile">
+                <div className="relative">
+                  <img
+                    className="user-profile-pic w-10 h-10 rounded-full"
+                    src={user.photoURL ? user.photoURL : Avatar}
+                    alt="user"
+                    height="60"
+                  />
+                  <div
+                    className={`text-center hidden tooltip absolute left-0 mt-2 z-10 py-2 px-3 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm  dark:bg-gray-700`}>
+                    {user.displayName}
+                  </div>
                 </div>
-              </div>
+              </Link>
 
               <button onClick={signOut} className="btn bg-cpurple text-white hover:bg-violet-600">
                 Sign Out
@@ -144,18 +148,20 @@ const Header = ({ darkMode, toggleMode }) => {
           {user && user.uid ? (
             <>
               <li className="mb-4 ml-2">
-                <div className="relative">
-                  <img
-                    className="user-profile-pic w-10 h-10 rounded-full"
-                    src={user.photoURL ? user.photoURL : Avatar}
-                    alt="user"
-                    height="60"
-                  />
-                  <div
-                    className={`text-center hidden tooltip absolute left-0 mt-2 z-10 py-2 px-3 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm  dark:bg-gray-700`}>
-                    {user.displayName}
+                <Link to="/profile">
+                  <div className="relative">
+                    <img
+                      className="user-profile-pic w-10 h-10 rounded-full"
+                      src={user.photoURL ? user.photoURL : Avatar}
+                      alt="user"
+                      height="60"
+                    />
+                    <div
+                      className={`text-center hidden tooltip absolute left-0 mt-2 z-10 py-2 px-3 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm  dark:bg-gray-700`}>
+                      {user.displayName}
+                    </div>
                   </div>
-                </div>
+                </Link>
               </li>
               <li className="mb-4 ml-2">
                 <button onClick={signOut} className="btn bg-cpurple text-white hover:bg-violet-600">

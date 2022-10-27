@@ -4,8 +4,8 @@ import logo from '../../../images/logo.svg';
 
 const Footer = () => {
   return (
-    <div className="bg-cgray pt-8 pb-5">
-      <footer className="container mx-auto p-4 sm:p-6 dark:bg-gray-900">
+    <div className="bg-cgray dark:bg-cdark dark:text-white pt-8 pb-5">
+      <footer className="container mx-auto p-4 sm:p-6">
         <div className="md:flex md:justify-between">
           <div className="mb-6 md:mb-0">
             <a href="/" className="flex items-center">

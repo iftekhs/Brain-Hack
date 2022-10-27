@@ -22,7 +22,7 @@ const CourseDetails = () => {
           )}
         </ReactToPdf>
       </div>
-      <div ref={courseRef} className="container-md mx-auto">
+      <div ref={courseRef} className="dark:text-white container-md mx-auto">
         <div className="mb-6 flex justify-center md:justify-start">
           <img className="rounded-lg" src={thumbnail_url} alt="" />
         </div>

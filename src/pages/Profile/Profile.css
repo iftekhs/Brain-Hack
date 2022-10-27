@@ -1,3 +1,9 @@
 .profile-container {
   min-height: 85vh;
 }
+
+.profile-card {
+  width: 800px;
+  max-width: 800px;
+  box-shadow: 0px 10px 30px -3px rgba(0, 0, 0, 0.1);
+}

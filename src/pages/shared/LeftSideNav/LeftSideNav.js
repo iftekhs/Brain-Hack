@@ -16,7 +16,10 @@ const LeftSideNav = () => {
 
   return (
     <>
-      <aside className={`${sideNavOpen && 'active-side-nav'} left-side-nav px-10`}>
+      <aside
+        className={`${
+          sideNavOpen && 'active-side-nav'
+        } bg-cgray dark:bg-slate-900 dark:text-white left-side-nav px-10`}>
         <ul className="side-nav-links">
           {categories.map((category) => (
             <SideNavItem key={category._id} category={category}></SideNavItem>

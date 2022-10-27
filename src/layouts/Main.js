@@ -1,22 +1,16 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
 import { Outlet } from 'react-router-dom';
+import { ThemeContext } from '../contexts/ThemeProvider';
 import Footer from '../pages/shared/Footer/Footer';
 import Header from '../pages/shared/Header/Header';
 
 const Main = () => {
-  const storedMode = localStorage.getItem('darkMode');
-  const [darkMode, setDarkMode] = useState(storedMode ? storedMode === 'true' : false);
-
-  const toggleMode = () => {
-    setDarkMode(!darkMode);
-    localStorage.setItem('darkMode', !darkMode);
-  };
-
+  const { darkMode } = useContext(ThemeContext);
   return (
     <div className={darkMode ? 'dark' : ''}>
-      <Header darkMode={darkMode} toggleMode={toggleMode}></Header>
-      <main>
-        <Outlet></Outlet>
+      <Header darkMode={darkMode}></Header>
+      <main className="dark:bg-cdark">
+        <Outlet darkMode={darkMode}></Outlet>
       </main>
       <Footer></Footer>
     </div>

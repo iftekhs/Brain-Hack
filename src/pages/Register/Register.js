@@ -8,7 +8,8 @@ import logo from '../../images/logo.svg';
 const Register = () => {
   const [btnLoading, setBtnLoading] = useState(false);
   const [error, setError] = useState(null);
-  const { createUser, providerLogin, updateUserProfile } = useContext(AuthContext);
+  const { createUser, providerLogin, trigger, setTrigger, updateUserProfile } =
+    useContext(AuthContext);
   const navigate = useNavigate();
 
   //    Providers
@@ -21,7 +22,10 @@ const Register = () => {
       photoURL: photoURL,
     };
     updateUserProfile(profile)
-      .then(() => {})
+      .then(() => {
+        setTrigger(!trigger);
+        navigate('/');
+      })
       .catch((error) => console.error(error));
   };
   const handleSubmit = (event) => {
@@ -40,7 +44,6 @@ const Register = () => {
         console.log(user);
         form.reset();
         handleUpdateUserProfile(name, photoURL);
-        navigate('/');
       })
       .catch((e) => setError(e.message))
       .finally(() => {
@@ -77,7 +80,7 @@ const Register = () => {
               programmers. Sign Up and start building awesome skills!
             </p>
           </div>
-          <div className="right flex flex-col items-center justify-center">
+          <div className="right dark:bg-slate-800 dark:text-white flex flex-col items-center justify-center">
             <h2 className="text-3xl mb-2 text-center">Welcome to BrainHack!</h2>
             <p className="text-md text-center text-slate-400 mb-8">
               We are currently giving users a special offer of 20% off on all our courses!
@@ -142,13 +145,13 @@ const Register = () => {
               <button
                 onClick={handleGoogleSignIn}
                 type="button"
-                className="w-full mb-2 border rounded-lg flex items-center justify-center py-3 gap-3 cursor-pointer hover:bg-slate-50 transition-all">
+                className="w-full mb-2 border rounded-lg flex items-center justify-center py-3 gap-3 cursor-pointer dark:hover:bg-slate-500 hover:bg-slate-50 transition-all">
                 <FaGoogle></FaGoogle> Sign Up
               </button>
               <button
                 onClick={handleGithubSignIn}
                 type="button"
-                className="w-full border rounded-lg flex items-center justify-center py-3 gap-3 cursor-pointer hover:bg-slate-50 transition-all">
+                className="w-full border rounded-lg flex items-center justify-center py-3 gap-3 cursor-pointer dark:hover:bg-slate-500 hover:bg-slate-50 transition-all">
                 <FaGithub></FaGithub> Sign Up
               </button>
 

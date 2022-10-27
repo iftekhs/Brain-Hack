@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { FaRegChartBar } from 'react-icons/fa';
 import { AiOutlineSearch } from 'react-icons/ai';
 import { BsBullseye } from 'react-icons/bs';
@@ -6,8 +6,10 @@ import { Link } from 'react-router-dom';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 
 import './Home.css';
+import { ThemeContext } from '../../contexts/ThemeProvider';
 
 const Home = () => {
+  const { darkMode } = useContext(ThemeContext);
   const position = [40.757893, -73.98565];
   return (
     <>
@@ -33,7 +35,7 @@ const Home = () => {
         <div className="shape">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
             <path
-              fill="#ffffff"
+              fill={darkMode ? '#000' : '#ffffff'}
               fillOpacity="1"
               d="M0,128L120,154.7C240,181,480,235,720,234.7C960,235,1200,181,1320,154.7L1440,128L1440,320L1320,320C1200,320,960,320,720,320C480,320,240,320,120,320L0,320Z"></path>
           </svg>
@@ -42,34 +44,36 @@ const Home = () => {
       <section className="px-2">
         <div className="container mx-auto">
           <div className="features flex flex-wrap items-center justify-center gap-4">
-            <div className="rounded feature">
+            <div className="rounded feature dark:bg-slate-800">
               <div className="text-2xl bg-violet-500 p-2 rounded text-white">
                 <FaRegChartBar></FaRegChartBar>
               </div>
               <div>
-                <h4 className="text-lg font-semibold mb-1">Course Structure</h4>
+                <h4 className="text-lg dark:text-white font-semibold mb-1">Course Structure</h4>
                 <p className="text-sm text-slate-400">
                   Courses structured in a very planned manner to help learn efficiently.
                 </p>
               </div>
             </div>
-            <div className="rounded feature">
+            <div className="rounded feature dark:bg-slate-800">
               <div className="text-2xl bg-violet-500 p-2 rounded text-white">
                 <BsBullseye></BsBullseye>
               </div>
               <div>
-                <h4 className="text-lg font-semibold mb-1">Detailed Explanations</h4>
+                <h4 className="text-lg dark:text-white font-semibold mb-1">
+                  Detailed Explanations
+                </h4>
                 <p className="text-sm text-slate-400">
                   Experts have simplified the course in a very detailed way.
                 </p>
               </div>
             </div>
-            <div className="rounded feature">
+            <div className="rounded feature dark:bg-slate-800">
               <div className="text-2xl bg-violet-500 p-2 rounded text-white">
                 <AiOutlineSearch></AiOutlineSearch>
               </div>
               <div>
-                <h4 className="text-lg font-semibold mb-1">Researched</h4>
+                <h4 className="text-lg dark:text-white font-semibold mb-1">Researched</h4>
                 <p className="text-sm text-slate-400">
                   Our experts have researched and created awesome courses.
                 </p>
@@ -80,7 +84,11 @@ const Home = () => {
       </section>
       <div className="my-20"></div>
 
-      <MapContainer className="leaflet" center={position} zoom={15} scrollWheelZoom={false}>
+      <MapContainer
+        className="dark:bg-cdark leaflet"
+        center={position}
+        zoom={15}
+        scrollWheelZoom={false}>
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
