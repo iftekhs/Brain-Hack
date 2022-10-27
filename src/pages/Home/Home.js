@@ -2,9 +2,13 @@ import React from 'react';
 import { FaRegChartBar } from 'react-icons/fa';
 import { AiOutlineSearch } from 'react-icons/ai';
 import { BsBullseye } from 'react-icons/bs';
-import './Home.css';
 import { Link } from 'react-router-dom';
+import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
+
+import './Home.css';
+
 const Home = () => {
+  const position = [40.757893, -73.98565];
   return (
     <>
       <section className="hero px-2">
@@ -25,7 +29,6 @@ const Home = () => {
           </Link>
         </div>
       </section>
-
       <div className="shape-container">
         <div className="shape">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
@@ -36,7 +39,6 @@ const Home = () => {
           </svg>
         </div>
       </div>
-
       <section className="px-2">
         <div className="container mx-auto">
           <div className="features flex flex-wrap items-center justify-center gap-4">
@@ -77,6 +79,18 @@ const Home = () => {
         </div>
       </section>
       <div className="my-20"></div>
+
+      <MapContainer className="leaflet" center={position} zoom={15} scrollWheelZoom={false}>
+        <TileLayer
+          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+        />
+        <Marker position={position}>
+          <Popup>
+            A pretty CSS3 popup. <br /> Easily customizable.
+          </Popup>
+        </Marker>
+      </MapContainer>
     </>
   );
 };
