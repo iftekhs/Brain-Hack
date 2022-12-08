@@ -1,6 +1,6 @@
 # Brain-Hack
 
-Online courses selling platform
+Online courses selling platform. Live Site: https://brain-hack-79605.web.app/
 
 ## Features and Functionalities
 
