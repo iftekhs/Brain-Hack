@@ -7,7 +7,7 @@ import Header from '../pages/shared/Header/Header';
 const Main = () => {
   const { darkMode } = useContext(ThemeContext);
   return (
-    <div className={darkMode ? 'dark' : ''}>
+    <div className={darkMode && 'dark'}>
       <Header darkMode={darkMode}></Header>
       <main className="dark:bg-cdark">
         <Outlet darkMode={darkMode}></Outlet>
