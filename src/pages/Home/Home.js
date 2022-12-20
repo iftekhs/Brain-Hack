@@ -7,6 +7,7 @@ import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 
 import './Home.css';
 import { ThemeContext } from '../../contexts/ThemeProvider';
+import Trusted from './Trusted/Trusted';
 
 const Home = () => {
   const { darkMode } = useContext(ThemeContext);
@@ -41,6 +42,7 @@ const Home = () => {
           </svg>
         </div>
       </div>
+
       <section className="px-2">
         <div className="container mx-auto">
           <div className="features flex flex-wrap items-center justify-center gap-4">
@@ -83,6 +85,8 @@ const Home = () => {
         </div>
       </section>
       <div className="my-20"></div>
+
+      <Trusted></Trusted>
 
       <MapContainer
         className="dark:bg-cdark leaflet"
