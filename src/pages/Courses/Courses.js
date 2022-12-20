@@ -6,6 +6,7 @@ import './Courses.css';
 
 const Courses = () => {
   const { courses, coursesCategory } = useLoaderData();
+
   return (
     <section>
       <div className="courses-container">

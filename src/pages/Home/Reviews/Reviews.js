@@ -30,7 +30,7 @@ const Reviews = () => {
   ];
 
   return (
-    <section className="py-8 px-2">
+    <section className="py-20 px-2">
       <div className="dark:text-white py-5 flex flex-col items-center justify-center">
         <h2 className="text-2xl font-bold">Checkout Our Reviews</h2>
         <div className="flex flex-wrap items-center justify-center gap-5 mt-5">
