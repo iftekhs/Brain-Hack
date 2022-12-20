@@ -8,6 +8,7 @@ import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import './Home.css';
 import { ThemeContext } from '../../contexts/ThemeProvider';
 import Trusted from './Trusted/Trusted';
+import Reviews from './Reviews/Reviews';
 
 const Home = () => {
   const { darkMode } = useContext(ThemeContext);
@@ -87,6 +88,7 @@ const Home = () => {
       <div className="my-20"></div>
 
       <Trusted></Trusted>
+      <Reviews></Reviews>
 
       <MapContainer
         className="dark:bg-cdark leaflet"
